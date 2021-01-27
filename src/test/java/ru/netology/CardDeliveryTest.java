@@ -140,10 +140,9 @@ public class CardDeliveryTest {
     @Test
     void shouldNotSendIfTestIsEmpty() {
         open("http://localhost:9999");
-        $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
-        $("[data-test-id='agreement']").click();
         $$("button").find(exactText("Забронировать")).click();
-        $("[data-test-id=city].input_invalid .input__sub").shouldHave(exactText("Поле обязательно для заполнения"));
+        $("[data-test-id=city].input_invalid .input__sub").shouldHave(exactText
+                ("Поле обязательно для заполнения"));
 
     }
 

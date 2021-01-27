@@ -1,6 +1,7 @@
 package ru.netology;
 
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
@@ -17,15 +18,13 @@ public class CardDeliveryTest {
 
 
 
-//    @BeforeEach
-//    void setUpAll() {
-//        open("http://localhost:9999");
-//        $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
-//    }
+    @BeforeEach
+    void setUpAll() {
+        open("http://localhost:9999");
+    }
 
     @Test
     void shouldSendIfAllFieldIsCorrect() {
-        open("http://localhost:9999");
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id='city'] input").setValue("Брянск");
         LocalDate dateOfDelivery = LocalDate.now().plusDays(3);
@@ -43,7 +42,6 @@ public class CardDeliveryTest {
 
     @Test
     void shouldNotSendIfCityIsNotCorrect() {
-        open("http://localhost:9999");
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id='city'] input").setValue("Алматы");
         LocalDate dateOfDelivery = LocalDate.now().plusDays(3);
@@ -62,7 +60,6 @@ public class CardDeliveryTest {
 
     @Test
     void shouldNotSendIfDateIsNotCorrect() {
-        open("http://localhost:9999");
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id='city'] input").setValue("Брянск");
         LocalDate dateOfDelivery = LocalDate.now().plusDays(2);
@@ -81,7 +78,6 @@ public class CardDeliveryTest {
 
     @Test
     void shouldNotSendIfNameIsNotCorrect() {
-        open("http://localhost:9999");
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id='city'] input").setValue("Брянск");
         LocalDate dateOfDelivery = LocalDate.now().plusDays(3);
@@ -100,7 +96,6 @@ public class CardDeliveryTest {
 
     @Test
     void shouldNotSendIfTelIsNotCorrect() {
-        open("http://localhost:9999");
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id='city'] input").setValue("Брянск");
         LocalDate dateOfDelivery = LocalDate.now().plusDays(3);
@@ -119,7 +114,6 @@ public class CardDeliveryTest {
 
     @Test
     void shouldNotSendIfAgreementIsNotCorrect() {
-        open("http://localhost:9999");
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id='city'] input").setValue("Брянск");
         LocalDate dateOfDelivery = LocalDate.now().plusDays(3);
@@ -139,7 +133,6 @@ public class CardDeliveryTest {
 
     @Test
     void shouldNotSendIfTestIsEmpty() {
-        open("http://localhost:9999");
         $$("button").find(exactText("Забронировать")).click();
         $("[data-test-id=city].input_invalid .input__sub").shouldHave(exactText
                 ("Поле обязательно для заполнения"));
